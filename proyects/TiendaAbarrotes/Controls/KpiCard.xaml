@@ -1,0 +1,36 @@
+<UserControl x:Class="TiendaAbarrotes.Controls.KpiCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             x:Name="root">
+    <Border Background="White" CornerRadius="12" Padding="20" 
+            Effect="{StaticResource MaterialDesignShadowDepth1}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <Border Width="40" Height="40" CornerRadius="8" Background="{Binding IconBackground, ElementName=root}">
+                    <materialDesign:PackIcon Kind="{Binding Icon, ElementName=root}" 
+                                             Width="22" Height="22"
+                                             Foreground="{Binding IconForeground, ElementName=root}"
+                                             HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <TextBlock Text="{Binding Titulo, ElementName=root}" Margin="12,0,0,0" 
+                           FontWeight="SemiBold" Foreground="{StaticResource BrushTextoSecundario}"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <TextBlock Grid.Row="1" Text="{Binding Valor, ElementName=root}" 
+                       FontSize="30" FontWeight="Bold" 
+                       Foreground="{StaticResource BrushTextoPrincipal}"
+                       VerticalAlignment="Center" Margin="0,15,0,0"/>
+
+            <TextBlock Grid.Row="2" Text="{Binding Subtitulo, ElementName=root}" 
+                       FontSize="12" Foreground="{StaticResource BrushTextoTerciario}"/>
+        </Grid>
+    </Border>
+</UserControl>

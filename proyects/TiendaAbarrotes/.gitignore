@@ -1,0 +1,22 @@
+```text
+# Carpetas de compilación
+[Bb]in/
+[Oo]bj/
+
+# Base de datos local y archivos de usuario
+*.db
+*.db-shm
+*.db-wal
+tienda.db
+Backups/
+publish/
+
+# Configuración del IDE
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db

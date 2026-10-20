@@ -1,0 +1,122 @@
+<Window x:Class="TiendaAbarrotes.Views.PagoModal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Cobrar" Width="500"
+        SizeToContent="Height"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="{StaticResource BrushFondo}">
+    <StackPanel Margin="25">
+        <TextBlock Text="TOTAL A PAGAR" FontSize="12" FontWeight="SemiBold"
+                   Foreground="{StaticResource BrushTextoSecundario}"/>
+        <TextBlock x:Name="TotalText" Text="$0.00" FontSize="42" FontWeight="Bold"
+                   Foreground="{StaticResource BrushTextoPrincipal}"/>
+
+        <!-- Método de pago -->
+        <StackPanel Margin="0,15,0,15">
+            <TextBlock Text="Método de pago" FontWeight="SemiBold"
+                       Foreground="{StaticResource BrushTextoSecundario}" Margin="0,0,0,6"/>
+            <ComboBox x:Name="MetodoPagoCombo" Height="42"
+                      SelectionChanged="MetodoPagoCombo_SelectionChanged">
+                <ComboBoxItem Content="Efectivo" Tag="EFECTIVO"/>
+                <ComboBoxItem Content="Tarjeta" Tag="TARJETA"/>
+                <ComboBoxItem Content="Transferencia" Tag="TRANSFERENCIA"/>
+            </ComboBox>
+        </StackPanel>
+
+        <!-- Panel de denominaciones (solo efectivo) -->
+        <Border x:Name="DenominacionesPanel" Background="White" CornerRadius="12" Padding="16"
+                Effect="{StaticResource MaterialDesignShadowDepth1}">
+            <StackPanel>
+                <TextBlock Text="PAGA CON" FontSize="11" FontWeight="Bold"
+                           Foreground="{StaticResource BrushTextoSecundario}" Margin="0,0,0,8"/>
+
+                <Grid Margin="0,0,0,4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="90"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Denominación" FontSize="10" FontWeight="Bold"
+                               Foreground="{StaticResource BrushTextoTerciario}"/>
+                    <TextBlock Grid.Column="1" Text="Cantidad" FontSize="10" FontWeight="Bold"
+                               Foreground="{StaticResource BrushTextoTerciario}"/>
+                    <TextBlock Grid.Column="2" Text="Total" FontSize="10" FontWeight="Bold"
+                               Foreground="{StaticResource BrushTextoTerciario}"
+                               HorizontalAlignment="Right"/>
+                </Grid>
+
+                <ItemsControl x:Name="DenominacionesList">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90"/>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding ValorTexto}"
+                                           VerticalAlignment="Center" FontWeight="SemiBold"
+                                           Foreground="{StaticResource BrushTextoPrincipal}"/>
+                                <TextBox Grid.Column="1"
+                                         Text="{Binding CantidadTexto, UpdateSourceTrigger=PropertyChanged}"
+                                         Height="30" Padding="4" TextAlignment="Center"
+                                         Margin="0,0,10,0"/>
+                                <TextBlock Grid.Column="2" Text="{Binding TotalTexto}"
+                                           VerticalAlignment="Center" FontWeight="SemiBold"
+                                           Foreground="{StaticResource BrushAcento}"
+                                           HorizontalAlignment="Right"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <Separator Margin="0,8"/>
+
+                <Grid>
+                    <TextBlock Text="Total pagado" FontWeight="Bold"
+                               Foreground="{StaticResource BrushTextoPrincipal}" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="TotalPagadoText" Text="$0.00" FontSize="18" FontWeight="Bold"
+                               Foreground="{StaticResource BrushAcento}"
+                               HorizontalAlignment="Right"/>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <!-- Mensaje para pago electrónico -->
+        <Border x:Name="PagoElectronicoPanel" Background="White" CornerRadius="12" Padding="16"
+                Effect="{StaticResource MaterialDesignShadowDepth1}"
+                Visibility="Collapsed">
+            <StackPanel>
+                <TextBlock Text="PAGO ELECTRÓNICO" FontSize="11" FontWeight="Bold"
+                           Foreground="{StaticResource BrushTextoSecundario}"/>
+                <TextBlock Text="El monto se cobra exacto al total."
+                           Foreground="{StaticResource BrushTextoSecundario}" Margin="0,4,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Cambio -->
+        <Border Background="White" CornerRadius="12" Padding="16" Margin="0,12,0,0"
+                Effect="{StaticResource MaterialDesignShadowDepth1}">
+            <StackPanel>
+                <TextBlock Text="CAMBIO" FontSize="12" FontWeight="SemiBold"
+                           Foreground="{StaticResource BrushTextoSecundario}"/>
+                <TextBlock x:Name="CambioText" Text="$0.00" FontSize="28" FontWeight="Bold"
+                           Foreground="{StaticResource BrushExito}"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Botones -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+            <Button Content="Cancelar" Click="Cancelar_Click"
+                    Background="Transparent" Foreground="{StaticResource BrushPeligro}"
+                    Height="44" Padding="20,0" BorderThickness="0" Cursor="Hand"
+                    FontWeight="SemiBold"/>
+            <Button x:Name="ConfirmarBtn" Content="Confirmar cobro" Click="Confirmar_Click"
+                    Background="{StaticResource BrushAcento}" Foreground="White"
+                    Height="44" Padding="20,0" BorderThickness="0" Cursor="Hand"
+                    FontWeight="Bold" Margin="10,0,0,0"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

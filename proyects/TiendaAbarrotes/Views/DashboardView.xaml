@@ -1,0 +1,115 @@
+<UserControl x:Class="TiendaAbarrotes.Views.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+             xmlns:controls="clr-namespace:TiendaAbarrotes.Controls">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="25">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                
+            </Grid.RowDefinitions>
+
+            <!-- Encabezado -->
+            <Grid Grid.Row="0" Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock Text="VISTA GENERAL" Foreground="{StaticResource BrushAcento}"
+                               FontSize="11" FontWeight="Bold"/>
+                    <TextBlock Text="Dashboard" FontSize="28" FontWeight="Bold"
+                               Foreground="{StaticResource BrushTextoPrincipal}"/>
+                    <TextBlock Text="{Binding FechaActual}"
+                               Foreground="{StaticResource BrushTextoSecundario}"/>
+                </StackPanel>
+                <Button Command="{Binding ActualizarCommand}"
+                        HorizontalAlignment="Right" VerticalAlignment="Center"
+                        Height="42" Padding="18,0" BorderThickness="0" Cursor="Hand"
+                        Background="White">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Refresh" Width="18" Height="18"
+                                                 Foreground="{StaticResource BrushTextoSecundario}"
+                                                 VerticalAlignment="Center"/>
+                        <TextBlock Text="Actualizar" Margin="8,0,0,0"
+                                   Foreground="{StaticResource BrushTextoSecundario}"
+                                   FontWeight="SemiBold" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <!-- Fila 1: KPIs principales -->
+            <UniformGrid Grid.Row="1" Columns="4" Margin="0,0,0,20">
+                <controls:KpiCard Titulo="Ventas del Día"
+                                  Valor="{Binding VentasDelDia}"
+                                  Subtitulo="{Binding NumVentasDelDia}"
+                                  Icon="CartOutline"
+                                  IconBackground="#EEF2FF"
+                                  IconForeground="#5E5CE6"
+                                  Margin="5"/>
+                <controls:KpiCard Titulo="Productos Activos"
+                                  Valor="{Binding TotalProductos}"
+                                  Subtitulo="Productos registrados"
+                                  Icon="PackageVariant"
+                                  IconBackground="#ECFDF5"
+                                  IconForeground="#10B981"
+                                  Margin="5"/>
+                <controls:KpiCard Titulo="Stock Bajo"
+                                  Valor="{Binding StockBajo}"
+                                  Subtitulo="Requieren reposición"
+                                  Icon="AlertOutline"
+                                  IconBackground="#FEF2F2"
+                                  IconForeground="#EF4444"
+                                  Margin="5"/>
+                <controls:KpiCard Titulo="Ganancia del Mes"
+                                  Valor="{Binding GananciaDelMes}"
+                                  Subtitulo="{Binding VentasDelMes, StringFormat='Ventas: {0}'}"
+                                  Icon="CashMultiple"
+                                  IconBackground="#FFFBEB"
+                                  IconForeground="#F59E0B"
+                                  Margin="5"/>
+            </UniformGrid>
+
+            <!-- Fila 2: Analítica -->
+            <TextBlock Grid.Row="2" Text="Analítica" FontSize="16" FontWeight="SemiBold"
+                       Foreground="{StaticResource BrushTextoPrincipal}" Margin="0,5,0,10"/>
+            <TextBlock Grid.Row="3" Text="Ventas de los últimos 30 días"
+                       Foreground="{StaticResource BrushTextoSecundario}" FontSize="12"
+                       Margin="0,0,0,10"/>
+
+            <!-- Fila 3: Gráfico -->
+            <Border Grid.Row="4" Background="White" CornerRadius="12" Padding="20"
+                    Effect="{StaticResource MaterialDesignShadowDepth1}"
+                    Margin="0,0,0,20">
+                <lvc:CartesianChart Series="{Binding SeriesVentas}"
+                                    XAxes="{Binding EjeX}"
+                                    YAxes="{Binding EjeY}"
+                                    Height="280"
+                                    TooltipPosition="Top"/>
+            </Border>
+
+                        <!-- Fila 5: Top Productos -->
+            <TextBlock Grid.Row="5" Text="Top 5 Productos Más Vendidos" FontSize="16" FontWeight="SemiBold"
+                       Foreground="{StaticResource BrushTextoPrincipal}" Margin="0,10,0,10"/>
+            
+            <Border Grid.Row="6" Background="White" CornerRadius="12" Padding="10"
+                    Effect="{StaticResource MaterialDesignShadowDepth1}"
+                    Margin="0,0,0,20">
+                <DataGrid ItemsSource="{Binding TopProductos}"
+                          AutoGenerateColumns="False" CanUserAddRows="False"
+                          HeadersVisibility="Column" GridLinesVisibility="Horizontal"
+                          BorderThickness="0" Background="Transparent"
+                          RowBackground="Transparent" AlternatingRowBackground="#FAFBFC">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Producto" Binding="{Binding Nombre}" Width="*" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Cantidad Vendida" Binding="{Binding CantidadVendida}" Width="150" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Total Generado" Binding="{Binding TotalVendido}" Width="150" IsReadOnly="True"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

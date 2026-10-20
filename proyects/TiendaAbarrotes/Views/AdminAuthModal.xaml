@@ -1,0 +1,39 @@
+<Window x:Class="TiendaAbarrotes.Views.AdminAuthModal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Autorización requerida" Width="380"
+        SizeToContent="Height"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="{StaticResource BrushFondo}">
+    <StackPanel Margin="25">
+        <TextBlock Text="AUTORIZACIÓN" FontSize="11" FontWeight="Bold"
+                   Foreground="{StaticResource BrushAcento}"/>
+        <TextBlock Text="Se requiere un administrador" FontSize="20" FontWeight="Bold"
+                   Foreground="{StaticResource BrushTextoPrincipal}" Margin="0,0,0,10" TextWrapping="Wrap"/>
+        <TextBlock Text="Para cerrar la caja, ingresa las credenciales de un usuario con rol de Administrador."
+                   Foreground="{StaticResource BrushTextoSecundario}" FontSize="12" 
+                   TextWrapping="Wrap" Margin="0,0,0,20"/>
+
+        <TextBlock Text="Usuario" FontWeight="SemiBold"
+                   Foreground="{StaticResource BrushTextoSecundario}" Margin="0,0,0,4"/>
+        <TextBox x:Name="UsernameText" Height="42" Padding="10" Margin="0,0,0,12"/>
+
+        <TextBlock Text="Contraseña" FontWeight="SemiBold"
+                   Foreground="{StaticResource BrushTextoSecundario}" Margin="0,0,0,4"/>
+        <PasswordBox x:Name="PasswordText" Height="42" Padding="10" Margin="0,0,0,20"
+                     KeyDown="PasswordText_KeyDown"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Cancelar" Click="Cancelar_Click"
+                    Background="Transparent" Foreground="{StaticResource BrushPeligro}"
+                    Height="42" Padding="15,0" BorderThickness="0" Cursor="Hand"
+                    FontWeight="SemiBold"/>
+            <Button Content="Autorizar cierre" Click="Autorizar_Click"
+                    Background="{StaticResource BrushAcento}" Foreground="White"
+                    Height="42" Padding="15,0" BorderThickness="0" Cursor="Hand"
+                    FontWeight="Bold" Margin="10,0,0,0"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

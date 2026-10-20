@@ -1,0 +1,33 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Paleta Delta Flow -->
+    <Color x:Key="ColorFondo">#F4F7FC</Color>
+    <Color x:Key="ColorSidebarInicio">#1A2035</Color>
+    <Color x:Key="ColorSidebarFin">#0B1437</Color>
+    <Color x:Key="ColorAcento">#5E5CE6</Color>
+    <Color x:Key="ColorAcentoHover">#4B4AD5</Color>
+    <Color x:Key="ColorTextoPrincipal">#111827</Color>
+    <Color x:Key="ColorTextoSecundario">#6B7280</Color>
+    <Color x:Key="ColorTextoTerciario">#9CA3AF</Color>
+    <Color x:Key="ColorExito">#10B981</Color>
+    <Color x:Key="ColorPeligro">#EF4444</Color>
+    <Color x:Key="ColorBorde">#E5E7EB</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="BrushFondo" Color="{StaticResource ColorFondo}"/>
+    <SolidColorBrush x:Key="BrushAcento" Color="{StaticResource ColorAcento}"/>
+    <SolidColorBrush x:Key="BrushTextoPrincipal" Color="{StaticResource ColorTextoPrincipal}"/>
+    <SolidColorBrush x:Key="BrushTextoSecundario" Color="{StaticResource ColorTextoSecundario}"/>
+    <SolidColorBrush x:Key="BrushTextoTerciario" Color="{StaticResource ColorTextoTerciario}"/>
+    <SolidColorBrush x:Key="BrushExito" Color="{StaticResource ColorExito}"/>
+    <SolidColorBrush x:Key="BrushPeligro" Color="{StaticResource ColorPeligro}"/>
+    <SolidColorBrush x:Key="BrushBorde" Color="{StaticResource ColorBorde}"/>
+
+    <!-- Gradiente del sidebar -->
+    <LinearGradientBrush x:Key="BrushSidebarGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="{StaticResource ColorSidebarInicio}" Offset="0"/>
+        <GradientStop Color="{StaticResource ColorSidebarFin}" Offset="1"/>
+    </LinearGradientBrush>
+
+</ResourceDictionary>

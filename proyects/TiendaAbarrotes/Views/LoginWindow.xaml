@@ -1,0 +1,107 @@
+<Window x:Class="TiendaAbarrotes.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Iniciar sesión — AbarrotesPOS"
+        Width="1100" Height="650"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Background="{StaticResource BrushFondo}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.1*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Cerrar button arriba derecha -->
+        <Button Grid.ColumnSpan="2" Content="✕" HorizontalAlignment="Right" VerticalAlignment="Top"
+                Width="40" Height="40" Margin="0,10,10,0"
+                Background="Transparent" BorderThickness="0" 
+                Foreground="{StaticResource BrushTextoSecundario}"
+                Cursor="Hand" Click="Cerrar_Click" FontSize="14"/>
+
+        <!-- ======== IZQUIERDA: Branding ======== -->
+        <Grid Grid.Column="0" Background="{StaticResource BrushSidebarGradient}">
+            <StackPanel VerticalAlignment="Center" Margin="60,0">
+                <Border Background="#14FFFFFF" CornerRadius="20" Padding="14,6"
+                        HorizontalAlignment="Left" Margin="0,0,0,30">
+                    <TextBlock Text="🔒 Plataforma empresarial segura" Foreground="White" FontSize="12"/>
+                </Border>
+
+                <Border Background="White" CornerRadius="12" Width="90" Height="90"
+                        HorizontalAlignment="Left" Margin="0,0,0,25">
+                        <Image Source="pack://application:,,,/Assets/deltaflow-icon.png"
+                        Width="100" Height="90"
+                        Stretch="Uniform"
+                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+
+                <TextBlock Text="AbarrotesPOS" FontSize="18" FontWeight="SemiBold" 
+                           Foreground="#B0B8C8"/>
+
+                <TextBlock Text="Controla tu" FontSize="46" FontWeight="Bold"
+                           Foreground="White" Margin="0,25,0,0"/>
+                <TextBlock Text="operación" FontSize="46" FontWeight="Bold"
+                           Foreground="White" Margin="0,-10,0,0"/>
+                <TextBlock Text="desde un solo" FontSize="46" FontWeight="Bold"
+                           Foreground="#8899FF" Margin="0,-10,0,0"/>
+                <TextBlock Text="lugar." FontSize="46" FontWeight="Bold"
+                           Foreground="#8899FF" Margin="0,-10,0,0"/>
+
+                <TextBlock Text="Gestiona ventas, inventario, cajas y usuarios mediante una plataforma centralizada."
+                           Foreground="#B0B8C8" FontSize="14"
+                           TextWrapping="Wrap" Margin="0,25,0,0" MaxWidth="380"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- ======== DERECHA: Formulario ======== -->
+        <Grid Grid.Column="1" Background="White">
+            <StackPanel VerticalAlignment="Center" Margin="50,0">
+                <TextBlock Text="BIENVENIDO" FontSize="11" FontWeight="Bold"
+                           Foreground="{StaticResource BrushAcento}"/>
+                <TextBlock Text="Inicia sesión" FontSize="34" FontWeight="Bold"
+                           Foreground="{StaticResource BrushTextoPrincipal}" Margin="0,4,0,0"/>
+                <TextBlock Text="Ingresa tus credenciales para acceder al sistema."
+                           Foreground="{StaticResource BrushTextoSecundario}" Margin="0,8,0,30"/>
+
+                <TextBlock Text="Usuario" FontWeight="SemiBold"
+                           Foreground="{StaticResource BrushTextoSecundario}" Margin="0,0,0,6"/>
+                <TextBox x:Name="UsernameText" Height="46" Padding="12" FontSize="14"
+                         materialDesign:HintAssist.Hint="nombre de usuario"
+                         Margin="0,0,0,18"/>
+
+                <TextBlock Text="Contraseña" FontWeight="SemiBold"
+                           Foreground="{StaticResource BrushTextoSecundario}" Margin="0,0,0,6"/>
+                <PasswordBox x:Name="PasswordText" Height="46" Padding="12" FontSize="14"
+                             KeyDown="PasswordText_KeyDown"
+                             Margin="0,0,0,20"/>
+
+                <!-- Mensaje de error -->
+                <TextBlock x:Name="ErrorText" Foreground="{StaticResource BrushPeligro}" 
+                           FontWeight="SemiBold" Visibility="Collapsed" 
+                           Margin="0,0,0,10" TextWrapping="Wrap"/>
+
+                <Button Content="Iniciar sesión →" Click="Login_Click"
+                        Background="{StaticResource BrushAcento}" Foreground="White"
+                        Height="52" FontSize="15" FontWeight="Bold" BorderThickness="0"
+                        Cursor="Hand">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <TextBlock Text="🔒 Acceso seguro · Contacta al administrador si olvidaste tu contraseña."
+                           Foreground="{StaticResource BrushTextoTerciario}" FontSize="11"
+                           TextWrapping="Wrap" HorizontalAlignment="Center"
+                           Margin="0,20,0,0"/>
+
+                 <TextBlock Text="Desarrollado por DeltaFlow Labs"
+                           Foreground="#B0B8C8" FontSize="14"
+                           TextWrapping="Wrap" Margin="0,50,0,0" MaxWidth="380"/>          
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

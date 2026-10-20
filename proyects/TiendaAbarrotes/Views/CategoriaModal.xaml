@@ -1,0 +1,35 @@
+<Window x:Class="TiendaAbarrotes.Views.CategoriaModal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Nueva categoría" Width="420"
+        SizeToContent="Height"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="{StaticResource BrushFondo}">
+    <StackPanel Margin="25">
+        <TextBlock Text="NUEVA CATEGORÍA" FontSize="11" FontWeight="Bold"
+                   Foreground="{StaticResource BrushAcento}"/>
+        <TextBlock Text="Agregar categoría" FontSize="24" FontWeight="Bold"
+                   Foreground="{StaticResource BrushTextoPrincipal}" Margin="0,0,0,20"/>
+
+        <TextBlock Text="Nombre *" FontWeight="SemiBold"
+                   Foreground="{StaticResource BrushTextoSecundario}" Margin="0,0,0,4"/>
+        <TextBox x:Name="NombreText" Height="42" Padding="10" Margin="0,0,0,12"/>
+
+        <TextBlock Text="Descripción (opcional)" FontWeight="SemiBold"
+                   Foreground="{StaticResource BrushTextoSecundario}" Margin="0,0,0,4"/>
+        <TextBox x:Name="DescripcionText" Height="60" Padding="10"
+                 TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,15"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Cancelar" Click="Cancelar_Click"
+                    Background="Transparent" Foreground="{StaticResource BrushPeligro}"
+                    Height="42" Padding="20,0" BorderThickness="0" Cursor="Hand"
+                    FontWeight="SemiBold"/>
+            <Button Content="Guardar" Click="Guardar_Click"
+                    Background="{StaticResource BrushAcento}" Foreground="White"
+                    Height="42" Padding="20,0" BorderThickness="0" Cursor="Hand"
+                    FontWeight="Bold" Margin="10,0,0,0"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

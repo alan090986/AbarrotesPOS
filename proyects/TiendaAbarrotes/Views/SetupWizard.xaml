@@ -1,0 +1,100 @@
+<Window x:Class="TiendaAbarrotes.Views.SetupWizard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Configuración inicial — AbarrotesPOS"
+        Width="700" Height="720"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="{StaticResource BrushFondo}">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="40">
+            <TextBlock Text="BIENVENIDO" FontSize="11" FontWeight="Bold"
+                       Foreground="{StaticResource BrushAcento}"/>
+            <TextBlock Text="Configura tu tienda" FontSize="30" FontWeight="Bold"
+                       Foreground="{StaticResource BrushTextoPrincipal}"/>
+            <TextBlock Text="Esta información se captura una sola vez. Después podrás editar los datos desde el sistema."
+                       Foreground="{StaticResource BrushTextoSecundario}" 
+                       TextWrapping="Wrap" Margin="0,0,0,25"/>
+
+            <!-- Datos de la tienda -->
+            <Border Background="White" CornerRadius="12" Padding="20" Margin="0,0,0,15"
+                    Effect="{StaticResource MaterialDesignShadowDepth1}">
+                <StackPanel>
+                    <TextBlock Text="DATOS DE LA TIENDA" FontSize="11" FontWeight="Bold"
+                               Foreground="{StaticResource BrushAcento}" Margin="0,0,0,12"/>
+
+                    <TextBlock Text="Nombre de la tienda *" FontWeight="SemiBold"
+                               Foreground="{StaticResource BrushTextoSecundario}" Margin="0,0,0,4"/>
+                    <TextBox x:Name="NombreTiendaText" Height="40" Padding="10" Margin="0,0,0,12"/>
+
+                    <UniformGrid Rows="1" Columns="2" Margin="0,0,0,12">
+                        <StackPanel Margin="0,0,6,0">
+                            <TextBlock Text="RFC" FontWeight="SemiBold"
+                                       Foreground="{StaticResource BrushTextoSecundario}" Margin="0,0,0,4"/>
+                            <TextBox x:Name="RfcText" Height="40" Padding="10"/>
+                        </StackPanel>
+                        <StackPanel Margin="6,0,0,0">
+                            <TextBlock Text="Teléfono" FontWeight="SemiBold"
+                                       Foreground="{StaticResource BrushTextoSecundario}" Margin="0,0,0,4"/>
+                            <TextBox x:Name="TelefonoText" Height="40" Padding="10"/>
+                        </StackPanel>
+                    </UniformGrid>
+
+                    <TextBlock Text="Dirección" FontWeight="SemiBold"
+                               Foreground="{StaticResource BrushTextoSecundario}" Margin="0,0,0,4"/>
+                    <TextBox x:Name="DireccionText" Height="40" Padding="10" Margin="0,0,0,12"/>
+
+                    <TextBlock Text="Correo electrónico" FontWeight="SemiBold"
+                               Foreground="{StaticResource BrushTextoSecundario}" Margin="0,0,0,4"/>
+                    <TextBox x:Name="EmailText" Height="40" Padding="10"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Datos del administrador -->
+            <Border Background="White" CornerRadius="12" Padding="20" Margin="0,0,0,15"
+                    Effect="{StaticResource MaterialDesignShadowDepth1}">
+                <StackPanel>
+                    <TextBlock Text="USUARIO ADMINISTRADOR" FontSize="11" FontWeight="Bold"
+                               Foreground="{StaticResource BrushAcento}" Margin="0,0,0,12"/>
+                    <TextBlock Text="Este será el usuario principal con acceso total al sistema."
+                               Foreground="{StaticResource BrushTextoSecundario}" 
+                               TextWrapping="Wrap" Margin="0,0,0,12"/>
+
+                    <TextBlock Text="Nombre completo *" FontWeight="SemiBold"
+                               Foreground="{StaticResource BrushTextoSecundario}" Margin="0,0,0,4"/>
+                    <TextBox x:Name="NombreAdminText" Height="40" Padding="10" Margin="0,0,0,12"/>
+
+                    <TextBlock Text="Usuario *" FontWeight="SemiBold"
+                               Foreground="{StaticResource BrushTextoSecundario}" Margin="0,0,0,4"/>
+                    <TextBox x:Name="UsernameText" Height="40" Padding="10" Margin="0,0,0,12"/>
+
+                    <UniformGrid Rows="1" Columns="2">
+                        <StackPanel Margin="0,0,6,0">
+                            <TextBlock Text="Contraseña *" FontWeight="SemiBold"
+                                       Foreground="{StaticResource BrushTextoSecundario}" Margin="0,0,0,4"/>
+                            <PasswordBox x:Name="PasswordText" Height="40" Padding="10"/>
+                        </StackPanel>
+                        <StackPanel Margin="6,0,0,0">
+                            <TextBlock Text="Confirmar contraseña *" FontWeight="SemiBold"
+                                       Foreground="{StaticResource BrushTextoSecundario}" Margin="0,0,0,4"/>
+                            <PasswordBox x:Name="PasswordConfirmText" Height="40" Padding="10"/>
+                        </StackPanel>
+                    </UniformGrid>
+                </StackPanel>
+            </Border>
+
+            <!-- Botones -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="Cancelar" Click="Cancelar_Click"
+                        Background="Transparent" Foreground="{StaticResource BrushPeligro}"
+                        Height="46" Padding="24,0" BorderThickness="0" Cursor="Hand"
+                        FontWeight="SemiBold"/>
+                <Button Content="Configurar y continuar" Click="Guardar_Click"
+                        Background="{StaticResource BrushAcento}" Foreground="White"
+                        Height="46" Padding="24,0" BorderThickness="0" Cursor="Hand"
+                        FontWeight="Bold" Margin="10,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</Window>
