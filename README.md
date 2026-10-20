@@ -55,4 +55,4 @@ Si deseas clonar el código y modificarlo:
 ### Pasos
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/TU_USUARIO/TiendaAbarrotes.git
+   git clone https://github.com/alan09086/AbarrotesPOS.git
